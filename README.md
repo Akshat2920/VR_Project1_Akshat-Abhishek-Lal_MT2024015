@@ -109,3 +109,89 @@ The following table summarizes the performance of different machine learning mod
     - **CNN V2 achieved higher accuracy compared to CNN V1 in all cases.**
     - CNN V2 models required **fewer epochs (50)** to reach superior performance, whereas CNN V1 models were trained for **100 epochs**. This suggests that CNN V2 has a more efficient architecture.
 
+
+# Task 3: Image Segmentation using Traditional Methods
+The dataset consists of facial images and corresponding segmentation masks. The dataset is structured as follows:
+- **Image folder:** `/content/drive/MyDrive/1/face_crop`
+- **Mask folder:** `/content/drive/MyDrive/1/face_crop_segmentation` Each image has an associated mask highlighting specific regions of interest.
+
+### 1. Image Preprocessing
+- Images were loaded using OpenCV and resized where necessary.
+- Converted images to grayscale for threshold-based methods.
+- Applied various segmentation techniques to extract key regions.
+
+### 2. Segmentation Techniques and IoU Scores
+The following segmentation techniques were implemented and evaluated:
+
+| Segmentation Method              |
+| -------------------------------- |
+| **Otsu's Thresholding**          |
+| **Canny Edge Detection**         |
+| **Watershed Algorithm**          |
+| **Region Growing**               |
+| **GrabCut Algorithm**            |
+| **Haar Feature-Based Detection** |
+
+### Description of Techniques:
+
+- **Otsu's Thresholding**: Automatically determines a global threshold to separate foreground and background.
+- **Canny Edge Detection**: Identifies edges using gradient-based filtering, useful for object boundaries.
+- **Watershed Algorithm**: A marker-based segmentation technique that segments an image into regions based on gradients.
+- **Region Growing**: Starts from seed points and expands by adding neighboring pixels with similar properties.
+- **GrabCut Algorithm**: A graph-based segmentation technique that refines segmentation iteratively.
+- **Haar Feature-Based Detection**: Utilizes Haar-like features for object detection, often used in facial detection and segmentation tasks.
+## 3. Results
+
+- The **GrabCut Algorithm** gave the best visually sensible results.
+- **Haar Feature-Based Detection achieved an IoU of 0.69**, demonstrating a reasonable capability for segmentation.
+- **Otsu's Thresholding and Canny Edge Detection** had lower IoU scores, indicating less accurate segmentations.
+- The **Haar Feature Based Segmentation** gave the best results as we accurately detecting eyes and assuming that the portion below them should be a mask.
+- **Region based segmentation on Haar results** performed poorly giving an **IoU of 0.18**.
+<image>
+
+## 4. Observations and Analysis
+
+- **GrabCut outperformed other methods** due to its ability to refine boundaries through iterative graph-based optimization.
+- **Region Growing was effective but sensitive to seed point selection**, requiring careful initialization.
+- **Otsu's Thresholding and Canny Edge Detection** struggled due to lack of contextual awareness, leading to fragmented segmentation.
+- **Watershed worked well but sometimes over-segmented regions**, reducing overall accuracy.
+- **Haar Feature-Based Detection performed reasonably well but had limitations when segmenting complex regions.**
+
+# Task 4: U-Net Model for Image Segmentation
+
+## iii. Methodology
+
+### 1. Data Preprocessing
+
+- Images were resized to a uniform dimension.
+- Pixel values were normalized between 0 and 1.
+### 2. U-Net Model Architecture
+
+U-Net is a widely used convolutional neural network for image segmentation. It consists of an encoder-decoder structure:
+
+#### **U-Net Architecture**
+
+- **Encoder:** Uses convolutional layers followed by max-pooling to extract spatial features.
+- **Bottleneck Layer:** Bridges the encoder and decoder while preserving essential features.
+- **Decoder:** Uses upsampling layers to restore spatial dimensions and refine segmentation.
+- **Skip Connections:** Directly transfer spatial information from the encoder to the decoder to improve segmentation accuracy.
+- **Output Layer:** Uses a sigmoid activation function to generate a pixel-wise segmentation mask.
+
+### 3. Hyperparameters
+
+- **Batch Size:** 16
+- **Optimizer:** Adam
+- **Learning Rate:** 0.0001 applied reducing learning rate
+- **Loss Function:** Binary Crossentropy
+- **Epochs:** 50-100 depending on the experiment
+
+## iv. Results
+
+The U-Net model was evaluated based on the Intersection over Union (IoU) score:
+
+| Model Variation | Optimizer | IoU Score  | DICE Coeff. | Epochs |
+| --------------- | --------- | ---------- | ----------- | ------ |
+| U-Net           | Adam      | **0.6161** | **0.9312**  | 32     |
+
+## v. Observations and Analysis 
+- **Architecture Comparison:** U-Net achieved superior performance than traditional methods due to improved layer configurations and skip connections.
