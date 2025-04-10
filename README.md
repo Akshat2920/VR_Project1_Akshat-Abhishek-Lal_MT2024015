@@ -47,6 +47,9 @@ The following table summarizes the performance of different machine learning mod
 | Random Forest | Combined+PCA | 91.09%   |
 | Naïve Bayes   | Combined+PCA | 83.39%   |
 
+<img width="316" alt="image" src="https://github.com/user-attachments/assets/35bf53ea-ff1d-485f-8919-463c9faa6484" />
+<img width="318" alt="image" src="https://github.com/user-attachments/assets/511efcf1-ae15-4df9-a66a-df07f0411805" />
+
 
 # Task 2 : Face Mask Detection: CNN-Based Classification
 ### **Data Preprocessing**
