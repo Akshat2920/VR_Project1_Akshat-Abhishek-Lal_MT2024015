@@ -140,6 +140,11 @@ The following segmentation techniques were implemented and evaluated:
 - **Region Growing**: Starts from seed points and expands by adding neighboring pixels with similar properties.
 - **GrabCut Algorithm**: A graph-based segmentation technique that refines segmentation iteratively.
 - **Haar Feature-Based Detection**: Utilizes Haar-like features for object detection, often used in facial detection and segmentation tasks.
+
+<img width="1332" alt="image" src="https://github.com/user-attachments/assets/f88985fd-102e-4dc2-b1cf-55b85f5cd433" />
+<img width="555" alt="image" src="https://github.com/user-attachments/assets/462b0727-d6e5-4c29-b1a8-81d507cd2af1" />
+<img width="1092" alt="image" src="https://github.com/user-attachments/assets/4b99027a-8d48-4e09-8431-d09f831e15b9" />
+
 ## 3. Results
 
 - The **GrabCut Algorithm** gave the best visually sensible results.
@@ -185,7 +190,11 @@ U-Net is a widely used convolutional neural network for image segmentation. It c
 - **Loss Function:** Binary Crossentropy
 - **Epochs:** 50-100 depending on the experiment
 
+<img width="710" alt="image" src="https://github.com/user-attachments/assets/f3b6891b-f5fc-4652-a89f-aedad60a1c3d" />
+
+
 ## iv. Results
+<img width="653" alt="image" src="https://github.com/user-attachments/assets/fada49de-d58d-46ce-998e-e6b94dc72003" />
 
 The U-Net model was evaluated based on the Intersection over Union (IoU) score:
 
